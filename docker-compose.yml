@@ -4,7 +4,7 @@ services:
 
   db:
     image: mysql:5.7
-#    restart: always
+    restart: always
 #    expose: 
  #     - "3306"
     ports:
@@ -15,6 +15,9 @@ services:
       MYSQL_USER: ghost
       MYSQL_PASSWORD: '$GHOST_DBPW}'
 
+    volumes:
+      - mysql_data:/var/lib/mysql
+  
   ghost:
     image: ghost:latest
     depends_on:
@@ -34,3 +37,4 @@ services:
 
 volumes:
   ghost_data:
+  mysql_data:

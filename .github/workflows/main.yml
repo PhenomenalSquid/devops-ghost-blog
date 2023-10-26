@@ -1,0 +1,24 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and test with Docker Compose
+      run: |
+        docker-compose up -d db
+        sleep 5
+        docker-compose up -d ghost
+        docker-compose ps
+        # Add any other test commands you might want to run here.
+        docker-compose down
+
