@@ -18,9 +18,5 @@ jobs:
         docker-compose up -d db
         sleep 7 #make sure db is up and running first
         docker-compose up -d ghost
-        docker-compose ps 
-
-        #make sure ghost and db are running
-#        docker-compose ps | grep ghost 
-#        docker-compose ps | grep db 
+        docker-compose ps
         docker-compose down
