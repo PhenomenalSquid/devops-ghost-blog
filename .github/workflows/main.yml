@@ -21,6 +21,7 @@ jobs:
       
     - name: Build and test with Docker Compose
       run: |
+        env
         docker-compose up -d db
         sleep 30 #make sure db is up and running first
         docker-compose up -d ghost
