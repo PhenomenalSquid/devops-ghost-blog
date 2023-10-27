@@ -15,6 +15,8 @@ jobs:
 
     - name: Build and test with Docker Compose
       run: |
+        echo "GHOST_DBPW=${{ secrets.GHOST_DBPW }}" >> .env
+        echo "GHOST_DBUSER=${{ secrets.GHOST_DBUSER }}" >> .env
         docker-compose up -d db
         sleep 15 #make sure db is up and running first
         docker-compose up -d ghost
@@ -22,3 +24,5 @@ jobs:
         sudo docker-compose ps | grep ghost | grep -i up
         sudo docker-compose ps | grep db | grep -i up
         docker-compose down
+       
+        
