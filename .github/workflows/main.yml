@@ -20,6 +20,11 @@ jobs:
 #        echo "GHOST_DBUSER=${{ secrets.GHOST_DBUSER }}" >> .env
       
     - name: Build and test with Docker Compose
+      env:
+        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
+        MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
+        MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
+        GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}      
       run: |
         env | grep -i ghost
         docker-compose up -d db
@@ -29,17 +34,3 @@ jobs:
         sudo docker-compose ps | grep ghost | grep -i up
         sudo docker-compose ps | grep db | grep -i up
         docker-compose down
-      env:
-        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
-        MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
-        MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
-        GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}  
-    #- name: Diagnose MySQL logs
-    #  if: always()
-    #  run: |
-    #       docker logs devops-ghost-blog_db_1
-    #       echo "${{ secrets.GHOST_DBPW }}"
-    #       echo "GHOST_DBUSER=${GHOST_DBUSER}"
-    #       echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
-    #       echo "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
-
