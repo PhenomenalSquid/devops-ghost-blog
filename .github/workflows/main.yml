@@ -33,8 +33,7 @@ jobs:
         MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
         MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
         MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
-        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
-  
+        GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}  
     #- name: Diagnose MySQL logs
     #  if: always()
     #  run: |
