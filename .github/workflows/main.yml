@@ -14,10 +14,10 @@ jobs:
       uses: actions/checkout@v2
 
 
-    - name: build environment
-      run: |
-        echo "GHOST_DBPW=${{ secrets.GHOST_DBPW }}" >> .env
-        echo "GHOST_DBUSER=${{ secrets.GHOST_DBUSER }}" >> .env
+#    - name: build environment
+#      run: |
+#        echo "GHOST_DBPW=${{ secrets.GHOST_DBPW }}" >> .env
+#        echo "GHOST_DBUSER=${{ secrets.GHOST_DBUSER }}" >> .env
       
     - name: Build and test with Docker Compose
       run: |
@@ -28,5 +28,6 @@ jobs:
         sudo docker-compose ps | grep ghost | grep -i up
         sudo docker-compose ps | grep db | grep -i up
         docker-compose down
-       
-        
+      env:
+        GHOST_DBPW: ${{ secrets.GHOST_DBPW }}
+        GHOST_DBUSER: ${{ secrets.GHOST_DBUSER }}
