@@ -32,6 +32,7 @@ jobs:
         GHOST_DBPW: ${{ secrets.GHOST_DBPW }}
         GHOST_DBUSER: ${{ secrets.GHOST_DBUSER }}
         MYSQL_ROOT_PASSWORD: ${{ secrets.GHOST_DBPW }}
+        MYSQL_PASSWORD: ${{ secrets.GHOST_DBPW }}
 
     - name: Diagnose MySQL logs
       if: always()
