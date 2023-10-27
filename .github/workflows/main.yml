@@ -12,7 +12,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
+    
+  
     - name: Build and test with Docker Compose
       env:
         MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
