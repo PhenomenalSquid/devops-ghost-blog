@@ -21,7 +21,7 @@ jobs:
       
     - name: Build and test with Docker Compose
       run: |
-        env
+        env | grep -i ghost
         docker-compose up -d db
         sleep 30 #make sure db is up and running first
         docker-compose up -d ghost
@@ -30,17 +30,17 @@ jobs:
         sudo docker-compose ps | grep db | grep -i up
         docker-compose down
       env:
-        GHOST_DBPW: ${{ secrets.GHOST_DBPW }}
-        GHOST_DBUSER: ${{ secrets.GHOST_DBUSER }}
-        MYSQL_ROOT_PASSWORD: ${{ secrets.GHOST_DBPW }}
-        MYSQL_PASSWORD: ${{ secrets.GHOST_DBPW }}
-
-    - name: Diagnose MySQL logs
-      if: always()
-      run: |
-           docker logs devops-ghost-blog_db_1
-           echo "${{ secrets.GHOST_DBPW }}"
-           echo "GHOST_DBUSER=${GHOST_DBUSER}"
-           echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
-           echo "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
+        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
+        MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
+        MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
+        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
+  
+    #- name: Diagnose MySQL logs
+    #  if: always()
+    #  run: |
+    #       docker logs devops-ghost-blog_db_1
+    #       echo "${{ secrets.GHOST_DBPW }}"
+    #       echo "GHOST_DBUSER=${GHOST_DBUSER}"
+    #       echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+    #       echo "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
 
