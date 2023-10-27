@@ -31,3 +31,8 @@ jobs:
       env:
         GHOST_DBPW: ${{ secrets.GHOST_DBPW }}
         GHOST_DBUSER: ${{ secrets.GHOST_DBUSER }}
+
+
+    - name: Diagnose MySQL logs
+      if: always()
+      run: docker logs your_service_name_db_1
