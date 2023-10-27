@@ -15,9 +15,9 @@ jobs:
     
   
     - name: Build and test with Docker Compose
-    #  env:
-    #    MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
-    #    MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
+      env:
+        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
+        MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
     #    MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
     #    GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}      
 
