@@ -35,4 +35,4 @@ jobs:
 
     - name: Diagnose MySQL logs
       if: always()
-      run: docker logs db
+      run: docker logs devops-ghost-blog_db_1
