@@ -8,18 +8,17 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+    environment: ghost
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
       
     - name: Build and test with Docker Compose
-      environment: ghost
-      env:
-        MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
-        MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
-        MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
-        GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}      
+     # env:
+     #   MYSQL_PASSWORD: ${{ vars.GHOST_DBPW }}
+     #   MYSQL_ROOT_PASSWORD: ${{ vars.GHOST_DBPW }}
+     #   MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
+     #   GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}      
       run: |
         env | grep -i ghost
         docker-compose up -d db
