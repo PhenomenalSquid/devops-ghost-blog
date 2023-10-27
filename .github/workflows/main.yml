@@ -21,7 +21,6 @@ jobs:
         docker-compose ps 
 
         #make sure ghost and db are running
-        docker-compose ps | grep ghost 
-        docker-compose ps | grep db 
+#        docker-compose ps | grep ghost 
+#        docker-compose ps | grep db 
         docker-compose down
-	
