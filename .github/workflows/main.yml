@@ -16,13 +16,14 @@ jobs:
   
     - name: Build and test with Docker Compose
       env:
-        MYSQL_PASSWORD: ${{ env.GHOST_DBPW }}
-        MYSQL_ROOT_PASSWORD: ${{ env.GHOST_DBPW }}
+        MYSQL_PASSWORD: ${{ secrets.GHOST_DBPW }}
+        MYSQL_ROOT_PASSWORD: ${{ secrets.GHOST_DBPW }}
     #    MYSQL_DBUSER: ${{ vars.GHOST_DBUSER }}
     #    GHOST_DBUSER: ${{ vars.GHOST_DBUSER }}      
 
       run: |
         env | grep -i ghost
+        echo $GHOST_DBPW
         docker-compose up -d db
         sleep 30 #make sure db is up and running first
         docker-compose up -d ghost
