@@ -38,7 +38,7 @@ jobs:
       if: always()
       run: |
            docker logs devops-ghost-blog_db_1
-           echo "GHOST_DBPW=${GHOST_DBPW}"
+           echo "${{ secrets.GHOST_DBPW }}"
            echo "GHOST_DBUSER=${GHOST_DBUSER}"
            echo "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
            echo "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
