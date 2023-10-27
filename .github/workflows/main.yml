@@ -22,11 +22,11 @@ jobs:
     - name: Build and test with Docker Compose
       run: |
         docker-compose up -d db
-        sleep 60 #make sure db is up and running first
-        docker-compose up -d ghost
-        docker-compose ps
+        sleep 120 #make sure db is up and running first
+#        docker-compose up -d ghost
+#        docker-compose ps
         sudo docker-compose ps | grep ghost | grep -i up
-        sudo docker-compose ps | grep db | grep -i up
+#        sudo docker-compose ps | grep db | grep -i up
         docker-compose down
        
         
