@@ -35,4 +35,4 @@ jobs:
 
     - name: Diagnose MySQL logs
       if: always()
-      run: docker logs your_service_name_db_1
+      run: docker logs db
